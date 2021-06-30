@@ -1,0 +1,73 @@
+<app-doctornavbar></app-doctornavbar>
+<!-- Breadcrumbs section -->
+<section class="mar-t-50">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a href='bill' class="bctext"><i class="fa fa-address-book-o" aria-hidden="true"></i> Generate Bill</a></li>
+        </ol>
+    </div>
+</section>
+
+<!-- Generate Bill Form-->
+<section>
+    <div class="row mg-30">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading panelhdr">
+                    <h3 class="panel-title panelheadertext"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Generate Bill</h3>
+                </div>
+                <div class="panel-body">
+                    <form #billForm="ngForm" (ngSubmit)="billForm.valid && onSubmit(billForm)">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="Date">Date Of Appointment</label>
+                                <input type="date" class="form-control" #Date="ngModel" [(ngModel)]="serviceService.selectedBill.Date" name="Date" id="Date">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="PName">Patient Name</label>
+                                <input type="text" class="form-control" #PatientName="ngModel" [(ngModel)]="serviceService.selectedBill.PatientName" name="PatientName" id="PName">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="DName">Doctor Name</label>
+                                <input type="text" class="form-control" #DoctorName="ngModel" [(ngModel)]="serviceService.selectedBill.DoctorName" name="DoctorName" id="DName">
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Amt">Amount</label>
+                                <input type="number" class="form-control" #Amount="ngModel" [(ngModel)]="serviceService.selectedBill.Amount" name="Amount" id="Amount">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="POV">Purpose Of Visit</label>
+                                <input type="text" class="form-control" #PurposeOfVisit="ngModel" [(ngModel)]="serviceService.selectedBill.PurposeOfVisit" name="PurposeOfVisit" id="POV">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Pres">Prescription</label>
+                                <input type="text" class="form-control" #Prescription="ngModel" [(ngModel)]="serviceService.selectedBill.Prescription" name="Prescription" id="Pres">
+                            </div>
+                            </div>
+                                                        
+                            <div class="col-md-4 col-md-offset-5 mg-15 clrbth">
+                                <input type="submit" [disabled]="billForm.invalid" class="btn btn-success submitbtn" value="Generate Bill"> 
+                            </div>
+                          
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="success successMessage" *ngIf="showSuccessMessage">
+        <p><i class="fa fa-check-circle-o" aria-hidden="true"></i> Bill generated Successfully!</p>
+    </div>
+
+    <div class="alert" *ngIf="serverErrorMessage">
+        {{serverErrorMessage}}
+    </div>   
+
+</section>

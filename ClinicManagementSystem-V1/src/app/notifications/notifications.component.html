@@ -1,0 +1,47 @@
+<app-patientnavbar></app-patientnavbar>
+
+<section>
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a href='notifications' class="bctext"><i class="fa fa-address-book-o" aria-hidden="true"></i> PatientPage</a></li>
+        </ol>
+    </div>
+</section>
+
+<h2>Notifications</h2>
+
+<section>
+   <div class="row" *ngIf="item[0].PatientNotification == 0">
+       <div class="col-md-3">
+           <textarea class="form-control" rows="3" >"Your appointment is not booked yet."</textarea>
+           </div>
+       </div>
+
+       <div class="row" *ngIf="item[0].PatientNotification == 1;else not">
+        <div class="col-md-3">
+            <textarea class="form-control" rows="3">"Your appointment is booked."</textarea>
+            </div>
+        </div>
+
+        <ng-template #not>
+        <div class="row">
+            <div class="col-md-3">
+                <textarea class="form-control" rows="3">No Notifications.</textarea>
+                </div>
+            </div>
+        </ng-template>
+
+        
+
+
+
+
+</section>
+
+
+
+
+
+
+
+<router-outlet></router-outlet>

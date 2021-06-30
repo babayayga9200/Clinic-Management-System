@@ -1,0 +1,26 @@
+<div class="row">
+    <nav class="navbar navbar-fixed-top bg-primary ">
+      <div class="navbar-header">
+            <a routerLink="patient-view" class="navbar-brand txt-white">
+                <span class="logo"><i class="fa fa-stethoscope" aria-hidden="true"></i> </span> CLINIC MANAGEMENT SYSTEM
+            </a>
+            
+
+        </div>
+        <div class="navbar-collapse collapse float-right">
+            <a routerLink='/patient-view' class="navbar-brand headerfont">Home</a>
+            <a routerLink='/notifications' class="navbar-brand headerfont">Notifications</a>
+            <a routerLink='/current-appointments' class="navbar-brand headerfont">Current Appointments</a>
+            <a routerLink='/take-appointment' class="navbar-brand headerfont">Take Appointment</a>
+            <a routerLink='/bills-history' class="navbar-brand headerfont">Bills History</a>
+            <a routerLink='/treatment-history' class="navbar-brand headerfont">Treatment History</a>
+            <a routerLink='/feedback' class="navbar-brand headerfont">Feedback</a>
+            <a routerLink='' class="navbar-brand headerfont">Logout</a>
+        </div>
+    </nav>
+    <div class="container-fluid body-content">
+      <router-outlet></router-outlet> 
+        <footer class="navbar navbar-fixed-bottom bg-primary footercss">
+            <p>&copy;2021 Clinic Management System</p>
+        </footer>
+    </div>

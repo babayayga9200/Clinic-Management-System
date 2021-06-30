@@ -1,0 +1,33 @@
+
+    .panelheadertext, .bctext {
+        font-weight: bold;
+    }
+    .rdoposition {
+        position: relative;
+        top: 8px;
+    }
+    .panelhdr {
+        color: #31708f !important;
+        background-color: #aad3eb !important;
+    }
+    .mg-top-20 {
+        margin-top:20px;
+    }
+    .txt-center {
+        text-align: left !important;
+    }
+    .mg-30 {
+        margin-bottom: 30px;
+    }
+    .patientlist th:nth-child(1), .patientlist th:nth-child(2), .patientlist th:nth-child(3), .patientlist th:nth-child(4){
+        width:25%;
+    }
+
+    .doctorlist th:nth-child(1), .patientlist th:nth-child(2), .patientlist th:nth-child(3), .patientlist th:nth-child(4){
+        width:25%;
+    }
+
+    .stafflist th:nth-child(1), .patientlist th:nth-child(2), .patientlist th:nth-child(3), .patientlist th:nth-child(4){
+        width:25%;
+    }
+    

@@ -1,0 +1,64 @@
+<app-inavbar></app-inavbar>
+
+<!-- <div *ngIf="isLoginError" class="red-text center error-message">
+  <i class="material-icons">error</i> Incorrect username or password
+</div> -->
+<!-- <form #loginForm="ngForm" class="col s12 white" (ngSubmit)="OnSubmit(UserName.value,Password.value)"> -->
+   <!-- <div class="row">
+     <div class="input-field col s12">
+       <i class="material-icons prefix">account_circle</i>
+       <input type="text" #UserName ngModel name="UserName" placeholder="Username" required>
+     </div>
+   </div> -->
+   <!-- <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">vpn_key</i>
+        <input type="password" #Password ngModel name="Password" placeholder="Password" required>
+      </div>
+    </div> -->
+    <!-- <div class="row">
+        <div class="input-field col s12">
+          <button [disabled]="!loginForm.valid" class="btn-large btn-submit" type="submit">Login</button>
+        </div>
+      </div>
+</form> -->
+
+<div class="col-md-12">
+  <div class="panel panel-default mt-45">
+      <div class="panel-heading panelhdr">
+          <h3 class="panel-title panelheadertext"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Login </h3>
+      </div>
+      <div class="panel-body">
+        <div *ngIf="isLoginError" class="red-text center error-message">
+          <i class="material-icons">error</i> Incorrect username or password
+        </div>
+          <form #loginForm="ngForm" class="col s12 white" (ngSubmit)="OnSubmit(UserName.value,Password.value)">
+              <div class="col-md-12">
+                  <div class="form-group">
+                      <label for="Username">User Name</label>
+                      <input type="text" #UserName ngModel name="UserName" required class="form-control"
+                      placeholder="Enter Username">
+                  </div>
+
+                  <div class="form-group">
+                      <label for="Password">Password</label>
+                      <input type="password"  class="form-control" placeholder="Enter Password"
+                      #Password ngModel name="Password"  required>
+                  </div>    
+                          
+                  <div class="form-group">
+                  <!-- <input type="submit" [disabled]="signUpForm.invalid"  value="Register" class="btn btn-success submitbtn" /> -->
+              <!-- <a routerLink="/adminhome" class="btn btn-success submitbtn">Login</a>    -->
+              <button [disabled]="!loginForm.valid" class="btn-large btn-submit btn btn-success submitbtn" type="submit">Login</button>
+
+              </div>
+              </div> 
+    
+
+                
+
+              
+          </form>
+          </div>
+  </div>
+  </div>

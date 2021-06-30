@@ -1,0 +1,233 @@
+<app-navbar></app-navbar>
+<!-- @*Breadcrumbs section*@ -->
+<section class="mar-t-50">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a routerLink='manageclinic' class="bctext"><i class="fa fa-files-o" aria-hidden="true"></i> ManageClinic</a></li>
+        </ol>
+    </div>
+</section>
+
+<!-- @*Search section*@ -->
+<section>
+    <div class="row">
+        <form>
+           <h4 class="col-md-12 bctext">Select Category</h4>
+
+
+            <div class="col-md-3">
+                <div class="form-group rdoposition">
+                    <label class="radio-inline">
+                        <input type="radio" name="mngradio" id="Mngradio1" value="doctor" (change)="radioChangeHandler($event)"> Doctors
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="mngradio" id="Mngradio2" value="patient" (change)="radioChangeHandler($event)"> Patients
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="mngradio" id="iMngradio3" value="staff" (change)="radioChangeHandler($event)"> Other Staffs
+                    </label>
+                </div>
+            </div>        
+        </form>
+    </div>
+</section>
+
+<!-- @*List section*@ -->
+<section>
+    <div class="row mg-top-20 mg-30">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading panelhdr">
+                    <h3 class="panel-title panelheadertext"><i class="fa fa-book" aria-hidden="true"></i> Search Results</h3>
+                </div>
+                <div class="panel-body">
+
+                    <div class="alert alert-info text-center" role="alert" *ngIf="noDataToDisplay">
+                        <p>Select Category to display data.</p>
+                    </div>
+
+                    <div *ngIf="clickedUser==='doctor'" class="doctorlist table-responsive">
+                    <input class="form-control" type="text" name="DName" [(ngModel)]="DName" (ngModelChange)="SearchDoctor()" placeholder="Enter Doctor's name to be searched">
+                    <table class="table table-striped table-hover" >
+                        <thead>
+                            <tr>
+                                <th>View</th>
+                                <th>Delete</th>
+                                <th (click)="sort('Name')">Name&nbsp;<i class="fa fa-sort"></i></th>
+                                <th (click)="sort('Department.DeptName')">Department&nbsp;<i class="fa fa-sort"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of doctors | orderBy: key: reverse | paginate: {itemsPerPage:5,currentPage:p};">
+                                <th><span (click)='onSelectDoctor(item.DoctorID)'><i class="fa fa-id-badge selectIcon" aria-hidden="true"></i></span></th>
+                                <th><span (click)='onDeleteDoctor(item.DoctorID)'><i class="fa fa-trash deleteIcon" aria-hidden="true"></i></span></th>
+                                <td>{{item?.Name}}</td>
+                                <td>{{item?.DeptName}}</td>
+                            </tr>
+                            </tbody>
+                            <pagination-controls (pageChange) = "p = $event"></pagination-controls>
+                    </table>
+                    </div>
+
+                    <div *ngIf="clickedUser==='patient'" class="patientlist table-responsive"> 
+                    <input class="form-control" type="text" name="PName" [(ngModel)]="PName" (ngModelChange)="SearchPatient()" placeholder="Enter Patient's name to be searched">
+                    <table class="table table-striped table-hover" *ngIf="clickedUser==='patient'">
+                        <thead>
+                            <tr>
+                                <th>View</th>
+                                <th>Delete</th>
+                                <th (click)="sort('Name')">Name&nbsp;<i class="fa fa-sort"></i></th>
+                                <th (click)="sort('Phone')">Phone&nbsp;<i class="fa fa-sort"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of patients | orderBy: key: reverse | paginate: {itemsPerPage:5,currentPage:p};">
+                                <th><span (click)='OnSelectPatient(item.PatientID)'><i class="fa fa-id-badge selectIcon" aria-hidden="true"></i></span></th>
+                                <th><span (click)='OnDeletePatient(item.PatientID)'><i class="fa fa-trash deleteIcon" aria-hidden="true"></i></span></th>
+                                <td>{{item.Name}}</td>
+                                <td>{{item.Phone}}</td>
+                                </tr>
+                            </tbody>
+                            <pagination-controls (pageChange) = "p = $event"></pagination-controls>
+                    </table>
+                    </div>
+
+                    <div *ngIf="clickedUser==='staff'" class="stafflist table-responsive">
+                    <input class="form-control" type="text" name="SName" [(ngModel)]="SName" (ngModelChange)="SearchStaff()" placeholder="Enter Staff's name to be searched">
+                    <table class="table table-striped table-hover" >
+                        <thead>
+                            <tr>
+                                <th>View</th>
+                                <th>Delete</th>
+                                <th (click)="sort('Name')">Name&nbsp;<i class="fa fa-sort"></i></th>
+                                <th (click)="sort('Designation')">Designation&nbsp;<i class="fa fa-sort"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of staffs | orderBy: key: reverse | paginate: {itemsPerPage:5,currentPage:p};">
+                                <th><span (click)='OnSelectStaff(item.StaffID)'><i class="fa fa-id-badge selectIcon" aria-hidden="true"></i></span></th>
+                                <th><span (click)='OnDeleteStaff(item.StaffID)'><i class="fa fa-trash deleteIcon" aria-hidden="true"></i></span></th>
+                                <td>{{item.Name}}</td>
+                                <td>{{item.Designation}}</td>
+                            </tr>
+                            </tbody>
+                            <pagination-controls (pageChange) = "p = $event"></pagination-controls>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        
+        <div class="modal fade" id="doctorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="panel-title panelheadertext modal-title" id="myModalLabel"><i class="fa fa-address-book-o" aria-hidden="true"></i> Description</h4>
+                </div>
+                <div class="modal-body table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Phone Number</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let item of doctor">
+                            <tr>
+                                <td>{{item.Name}}</td>
+                                <td>{{item.Phone}}</td>
+                                <td>{{item.Email}}</td>
+                                <td>{{item.Address}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="modal fade" id="patientModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="panel-title panelheadertext modal-title" id="myModalLabel"><i class="fa fa-address-book-o" aria-hidden="true"></i> Description</h4>
+                </div>
+                <div class="modal-body table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Phone Number</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let item of patient">
+                            <tr>
+                                <td>{{item.Name}}</td>
+                                <td>{{item.Phone}}</td>
+                                <td>{{item.Email}}</td>
+                                <td>{{item.Address}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="modal fade" id="staffModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="panel-title panelheadertext modal-title" id="myModalLabel"><i class="fa fa-address-book-o" aria-hidden="true"></i> Description</h4>
+                </div>
+                <div class="modal-body table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Phone Number</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let item of staff">
+                            <tr>
+                                <td>{{item.Name}}</td>
+                                <td>{{item.Phone}}</td>
+                                <td>{{item.Email}}</td>
+                                <td>{{item.Address}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+       
+    </div>
+
+    <!-- delete Notification -->
+<div class="success deletedMessage" *ngIf="showDeleteMessage">
+    <p><i class="fa fa-check-circle-o" aria-hidden="true"></i> Row deleted Successfully!</p>
+  </div>
+</section>

@@ -1,0 +1,25 @@
+<!-- <a routeLink='manageclinic'>This is my home page</> -->
+    <div class="row">
+        <nav class="navbar navbar-fixed-top bg-primary ">
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#toggle-bar" aria-expanded="false">
+                    <span><i class="fa fa-bars icon-white" aria-hidden="true"></i></span>
+                  </button>
+                <a routerLink="/adminhome" class="navbar-brand txt-white">
+                    <span class="logo"><i class="fa fa-stethoscope" aria-hidden="true"></i> </span> CLINIC MANAGEMENT SYSTEM
+                </a>
+            </div>
+            <!-- <a [routerLink]="['/user/jim']">Jim</a> -->
+            <div class="navbar-collapse collapse float-right" id="toggle-bar">
+                <!-- <a routerLink='/register' class = "navbar-brand headerfont">Register</a> -->
+                <a routerLink='/adminhome' class = "navbar-brand headerfont">Admin Home</a>
+                <a routerLink='/manageclinic' class = "navbar-brand headerfont">Manage Clinic</a>
+                <a routerLink='/adddoctor' class = "navbar-brand headerfont">Add Doctor</a>
+                <a routerLink='/addstaff' class = "navbar-brand headerfont">Add Staff</a>
+                <a routerLink='/login' class = "navbar-brand headerfont">Log Out</a>
+                <!-- <a routerLink='/bill' class = "navbar-brand headerfont">Generate Bill</a> -->
+
+            </div>
+        </nav>
+        </div>

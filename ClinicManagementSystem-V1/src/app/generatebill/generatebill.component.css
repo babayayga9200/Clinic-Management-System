@@ -1,0 +1,8 @@
+.panel-heading.panelhdr {
+    color: #31708f !important;
+    background-color: #aad3eb !important;
+}
+
+h3.panel-title.panelheadertext {
+    font-weight: bold;
+}

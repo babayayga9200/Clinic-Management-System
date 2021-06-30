@@ -1,0 +1,26 @@
+.panelheadertext, .bctext {
+    font-weight: bold;
+}
+.panelhdr {
+    color: #31708f !important;
+    background-color: #aad3eb !important;
+}
+.submitbtn {
+    margin-top: 25px;
+    margin-bottom: 17px;
+}
+.mg-30 {
+    margin-bottom: 30px;
+}
+.no-resize {
+    resize: none;
+}
+
+.mt-45{
+margin-top: 45px;
+}
+.panel.panel-default.mt-45 {
+    max-width: 482px;
+    margin: 45px auto;
+    box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+}

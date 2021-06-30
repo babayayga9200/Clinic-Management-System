@@ -1,0 +1,174 @@
+<app-navbar></app-navbar>
+<!-- @*Breadcrumbs section*@ -->
+<section class="mar-t-50">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a routerLink='addstaff' class="bctext"><i class="fa fa-plus-square" aria-hidden="true"></i> AddStaff</a></li>
+        </ol>
+    </div>
+</section>
+
+<!-- @*Staff Form*@ -->
+<section>
+    <div class="row mg-30">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading panelhdr">
+                    <h3 class="panel-title panelheadertext"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Staff Registration Form</h3>
+                </div>
+                <div class="panel-body">
+                    <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="Username">User Name</label>
+                                <input type="text" class="form-control" #Name="ngModel" [(ngModel)]="serviceService.selectedStaff.Name" name="Name" id="Username" placeholder="Enter Username" required pattern="^[a-zA-Z ]*$">
+                                <div *ngIf="Name.invalid && (Name.dirty || Name.touched)" class="validation-error">
+                            <span *ngIf="Name.errors?.required" class="validation-error">
+                                Name is required.
+                            </span>
+                            <span  *ngIf="Name.errors?.pattern" class="validation-error">
+                                Name must be of only letters and spaces.
+                            </span>
+                          </div>  
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Password">Password</label>
+                                <input type="password" class="form-control" #Password="ngModel" [(ngModel)]="serviceService.selectedStaff.Password" name="Password" id="Password" placeholder="Enter Password" required pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$">
+                                <div *ngIf="Password.invalid && (Password.dirty || Password.touched)" class="validation-error">
+                                    <span *ngIf="Password.errors?.required" class="validation-error">
+                                        Password is required.
+                                    </span>
+                                    <span  *ngIf="Password.errors?.pattern" class="validation-error">
+                                        Password must contain minimum eight characters, at least one letter, one number and one special character.
+                                    </span>
+                                  </div>  
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Confirm">Confirm Password</label>
+                                <input type="password" class="form-control" #ConfirmPassword="ngModel" [(ngModel)]="serviceService.selectedStaff.ConfirmPassword" name="ConfirmPassword" id="Confirm" placeholder="Re-Enter password" required pattern="{{Password.value}}">
+                                <div *ngIf="ConfirmPassword.invalid && (ConfirmPassword.dirty || ConfirmPassword.touched)" class="validation-error">
+                                    <span *ngIf="ConfirmPassword.errors?.required" class="validation-error">
+                                        Password is required.
+                                    </span>
+                                    <span  *ngIf="ConfirmPassword.errors?.pattern" class="validation-error">
+                                        Passwords do not match.
+                                    </span>
+                                    </div> 
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="PhoneNumber">Phone Number</label>
+                                <input type="tel" class="form-control" #Phone="ngModel" [(ngModel)]="serviceService.selectedStaff.Phone" name="Phone" id="PhoneNumber" placeholder="Enter Phone number" required pattern="^[0-9]{10}$">
+                                <div *ngIf="Phone.invalid && (Phone.dirty || Phone.touched)" class="validation-error">
+                            <span *ngIf="Phone.errors?.required" class="validation-error">
+                                Phone number is required.
+                            </span>
+                            <span  *ngIf="Phone.errors?.pattern" class="validation-error">
+                                Phone number must be of 10 digits.
+                            </span>
+                          </div> 
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Salary">Salary In Rupees</label>
+                                <input type="number" class="form-control" #Salary="ngModel" [(ngModel)]="serviceService.selectedStaff.Salary" name="Salary" id="Salary" placeholder="Enter Salary In Rupees" required>
+                                <div *ngIf="Salary.invalid && (Salary.dirty || Salary.touched)" class="validation-error">
+                                    <span *ngIf="Salary.errors?.required" class="validation-error">
+                                        Salary is required.
+                                    </span>
+                                    </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Email">Email ID</label>
+                                <input type="email" class="form-control" #Email="ngModel" [(ngModel)]="serviceService.selectedStaff.Email" name="Email" id="Email" placeholder="Enter Email ID" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                                <div *ngIf="Email.invalid && (Email.dirty || Email.touched)" class="validation-error">
+                                    <span *ngIf="Email.errors?.required" class="validation-error">
+                                        Email is required.
+                                    </span>
+                                    <span  *ngIf="Email.errors?.pattern" class="validation-error">
+                                        Email is invalid.
+                                    </span>
+                                  </div>  
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+
+                                <div class="form-group">
+                                    <label for="dob">Date Of Birth</label>
+                                    <input type="date" class="form-control" #BirthDate="ngModel" [(ngModel)]="serviceService.selectedStaff.BirthDate" name="BirthDate" id="dob" placeholder="Enter Date Of Birth" required>
+                                </div>
+
+                                <div>
+                                    <label for="Qualification">Qualification</label>
+                                    <input type="text" class="form-control" #Highest_Qualification="ngModel" [(ngModel)]="serviceService.selectedStaff.Highest_Qualification" name="Highest_Qualification" id="Qualification" placeholder="Enter Qualification" required>
+                                    <div *ngIf="Highest_Qualification.invalid && (Highest_Qualification.dirty || Highest_Qualification.touched)" class="validation-error">
+                                        <span *ngIf="Highest_Qualification.errors?.required" class="validation-error">
+                                            Qualification is required.
+                                        </span>
+                                    </div>  
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Specialization">Designation</label>
+                                <input type="text" class="form-control" #Designation="ngModel" [(ngModel)]="serviceService.selectedStaff.Designation" name="Designation" id="Designation" placeholder="Enter designation" required>
+                                <div *ngIf="Designation.invalid && (Designation.dirty || Designation.touched)" class="validation-error">
+                                    <span *ngIf="Designation.errors?.required" class="validation-error">
+                                        Name is required.
+                                    </span>
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="department">Select Department</label>
+                                <select class="form-control" name="Department" #Department="ngModel" [(ngModel)]="serviceService.selectedStaff.Department" required>
+                                    <option>Select Department</option>
+                                    <option>Cardiology</option>
+                                    <option>Orthopaedics</option>
+                                    <option>Ears Nose Throat</option>
+                                    <option>Physiotherapy</option>
+                                    <option>Neurology</option>
+                                </select>
+                            </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="address">Address</label>
+                                <textarea class="form-control no-resize" #Address="ngModel" [(ngModel)]="serviceService.selectedStaff.Address" name="Address" id="address" rows="3" required></textarea>
+                                <div *ngIf="Address.invalid && (Address.dirty || Address.touched)" class="validation-error">
+                                    <span *ngIf="Address.errors?.required" class="validation-error">
+                                        Address is required.
+                                    </span>
+                                </div> 
+                            </div>
+
+                            
+                            <div class="col-md-4 col-md-offset-5 mg-15 clrbth">
+                                <input type="submit" [disabled]="signUpForm.invalid" class="btn btn-success submitbtn" value="Add Staff"> 
+                            </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="success successMessage" *ngIf="showSuccessMessage">
+        <p><i class="fa fa-check-circle-o" aria-hidden="true"></i> Staff added Successfully!</p>
+    </div>
+
+    <div class="alert" *ngIf="serverErrorMessage">
+        {{serverErrorMessage}}
+    </div>   
+
+</section>

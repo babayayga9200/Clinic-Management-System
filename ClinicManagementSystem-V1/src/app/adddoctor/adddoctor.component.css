@@ -1,0 +1,19 @@
+.panelheadertext, .bctext {
+    font-weight: bold;
+}
+.panelhdr {
+    color: #31708f !important;
+    background-color: #aad3eb !important;
+}
+.submitbtn {
+    margin-top: 25px;
+    margin-bottom: 17px;
+}
+.mg-30 {
+    margin-bottom: 30px;
+}
+.no-resize {
+    resize: none;
+}
+
+

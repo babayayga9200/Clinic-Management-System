@@ -1,0 +1,55 @@
+<app-doctornavbar></app-doctornavbar>
+<!-- Breadcrumbs section -->
+<section class="mar-t-50">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a href='todaysappointment' class="bctext"><i class="fa fa-address-book-o" aria-hidden="true"></i> Todays Appointment</a></li>
+        </ol>
+    </div>
+</section>
+
+<section>
+    <div class="row mb-50">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading panelhdr">
+                    <h3 class="panel-title panelheadertext"><i class="fa fa-book" aria-hidden="true"></i> Todaysappointment</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="panel-body table-responsive">   
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Appoint ID</th>
+                                <th>Doctor ID</th>
+                                <th>Patient ID</th>
+                                <th>Date</th>
+                            </tr>
+                            
+                        </thead>
+                        <tbody *ngFor="let item of data">
+                            <tr>
+                                <td>{{item.AppointID}}</td>
+                                <td>{{item.DoctorID}}</td>
+                                <td>{{item.PatientID}}</td>
+                                <td>{{item.Date | date:'dd/MM/yyyy hh:mm a'}}</td>
+                                <td><span (click)='onAcceptedAppointment(item.AppointID)'><button mat-raised-button color="warn">Accept</button></span></td>
+                                <td><span (click)='onDeleteAppointment(item.AppointID)'><button mat-raised-button color="warn">Delete</button></span></td>
+        
+                            </tr>
+                        </tbody>
+                        
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+     <!-- delete Notification -->
+     <div class="success deletedMessage" *ngIf="showDeleteMessage">
+        <p><i class="fa fa-check-circle-o" aria-hidden="true"></i> Row deleted Successfully!</p>
+    </div>
+</section>
+
+<router-outlet></router-outlet>

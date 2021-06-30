@@ -1,0 +1,10 @@
+.panel-heading.panelhdr {
+    color: #31708f !important;
+    background-color: #aad3eb !important;
+}
+.panel.panel-default.mt-45 {
+    margin-top: 73px;
+    max-width: 340px;
+    margin: 74px auto;
+    box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+}

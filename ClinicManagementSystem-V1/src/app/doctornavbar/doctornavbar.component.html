@@ -1,0 +1,28 @@
+<!-- <a routeLink='manageclinic'>This is my home page</> -->
+    <div class="row">
+        <nav class="navbar navbar-fixed-top bg-primary ">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#toggle-bar" aria-expanded="false">
+                  <span><i class="fa fa-bars icon-white" aria-hidden="true"></i></span>
+                </button>
+                <a routerLink="doctordetails" class="navbar-brand txt-white">
+                    <span class="logo"><i class="fa fa-stethoscope" aria-hidden="true"></i> </span> CLINIC MANAGEMENT SYSTEM
+                </a>
+            </div>
+            <!-- <a [routerLink]="['/user/jim']">Jim</a> -->
+            <div class="navbar-collapse collapse float-right"  id="toggle-bar">
+                <a routerLink='/doctordetails' class = "navbar-brand headerfont">Doctor Details</a>
+                <a routerLink='/todaysappointment' class = "navbar-brand headerfont">Todays Appointment</a>
+                <a routerLink='/viewappointments' class = "navbar-brand headerfont">Pending Appointment</a>
+                <a routerLink='/patienthistory' class = "navbar-brand headerfont">Patient History</a>
+               <!-- <a routerLink='generatebill' class = "navbar-brand headerfont">Generate Bill</a>-->
+                
+            </div>
+        </nav>
+        </div>
+        <div class="container-fluid body-content">
+          <router-outlet></router-outlet>
+            <footer class="navbar navbar-fixed-bottom bg-primary footercss">
+                <p>&copy;2021 Clinic Management System</p>
+            </footer>
+        </div>
