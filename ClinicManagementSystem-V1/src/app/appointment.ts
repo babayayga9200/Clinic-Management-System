@@ -1,5 +1,5 @@
 export class Appointment{
-    DoctorId:number;
+    DoctorId:number=35;
     PatientId:number;
-    DOA:Date;
+    Date:Date;
 }

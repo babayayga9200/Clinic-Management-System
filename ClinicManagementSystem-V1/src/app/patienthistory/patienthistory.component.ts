@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiceService } from '../service.service';
 
 @Component({
   selector: 'app-patienthistory',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PatienthistoryComponent implements OnInit {
 
-  constructor() { }
-
+  data:any;
+  constructor(private api:ServiceService) { }
   ngOnInit(): void {
+  
+    this.api.getbills().subscribe((data)=>{
+      this.data=data;
+        });
   }
-
 }

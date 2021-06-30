@@ -2,7 +2,7 @@
 <section>
     <div class="row">
         <ol class="breadcrumb">
-            <li><a routerLink='patient-view' class="bctext"><i class="fa fa-address-book-o" aria-hidden="true"></i> PatientPage</a></li>
+            <li><a href='/patient-view' class="bctext"><i class="fa fa-address-book-o" aria-hidden="true"></i> PatientPage</a></li>
         </ol>
     </div>
 </section>
@@ -22,7 +22,7 @@
                       <th>Phone</th>
                       <th>Address</th>
                       <th>BirthDate</th>
-                      <th>Gender</th>
+                      <!-- <th>Gender</th> -->
                       </tr>
                   </thead>
                   <tbody *ngFor="let item of patient">
@@ -31,7 +31,7 @@
                         <td>{{item?.Phone}}</td>
                         <td>{{item?.Address}}</td>
                         <td>{{datePipe.transform(item?.BirthDate,'dd-MM-yyyy')}}</td>
-                        <td>{{item?.Gender}}</td> 
+                        <!-- <td>{{item?.Gender}}</td>  -->
                       
                         </tr>
                     </tbody>

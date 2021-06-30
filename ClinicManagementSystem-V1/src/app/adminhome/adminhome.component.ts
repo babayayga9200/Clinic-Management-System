@@ -38,27 +38,22 @@ export class AdminhomeComponent implements OnInit {
 
     this.api.getDoctor().subscribe((doctors)=>{
       this.doctors=doctors;
-      console.log(doctors); 
         });
 
     this.api.getDoctorCount().subscribe((docCount)=>{
     this.docCount=docCount;
-    console.log(docCount);      
   });
 
   this.api.getAppointment().subscribe(appointment=>{
     this.appointment=appointment;
-    console.log(appointment);
   });
 
   this.api.getPatientCount().subscribe((patient)=>{
     this.patient=patient;
-    console.log(patient);
   });
 
  this.api.getTotalIncome().subscribe((income)=>{
    this.income=income;
-   console.log(income);
  });
 
  

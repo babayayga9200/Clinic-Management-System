@@ -12,9 +12,8 @@ export class TreatmentHistoryComponent implements OnInit {
   constructor(private api:ServiceService) { }
 
   ngOnInit(): void {
-    this.api. getBillDetailsById(10).subscribe((Patient_History)=>{
+    this.api. getBillDetailsById(this.api.login()).subscribe((Patient_History)=>{
     this.Patient_History=Patient_History;
-    console.log(Patient_History); 
    });
   }
 

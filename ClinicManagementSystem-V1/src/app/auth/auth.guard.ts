@@ -32,7 +32,7 @@ export class AuthGuard implements CanActivate {
           var match = this.userService.roleMatch(roles);
           if (match) return true;
           else {
-            this.router.navigate(['/register']);
+            this.router.navigate(['/forbidden']);
             return false;
           }
         }

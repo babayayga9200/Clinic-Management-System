@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 
 export class ViewappointmentsComponent implements OnInit {
 
-  constructor(private api:ServiceService){
+  constructor(private api:ServiceService, public router :Router){
 
  
 
@@ -22,13 +22,11 @@ export class ViewappointmentsComponent implements OnInit {
     if(confirm("Do you want to delete this record?")){
       this.api.deleteAppointmentById(id).subscribe((aapoint)=>{
         this.aapoint=this.aapoint;
-        console.log(this.aapoint);
       
         
   
       this.api.getAcceptedAppointmentst().subscribe((data)=>{
-      this.data=data;
-      console.log(data); 
+      this.data=data; 
           });
         
        });  

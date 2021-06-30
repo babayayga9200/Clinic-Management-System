@@ -3,7 +3,7 @@
 <section>
     <div class="row">
         <ol class="breadcrumb">
-            <li><a href='notifications' class="bctext"><i class="fa fa-address-book-o" aria-hidden="true"></i> PatientPage</a></li>
+            <li><a href='/notifications' class="bctext"><i class="fa fa-address-book-o" aria-hidden="true"></i> PatientPage Notification</a></li>
         </ol>
     </div>
 </section>
@@ -11,6 +11,12 @@
 <h2>Notifications</h2>
 
 <section>
+    <div class="row">
+        <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading panelhdr">
+                <h3 class="panel-title panelheadertext"><i class="fa fa-id-card-o" aria-hidden="true"></i> Notification</h3>
+            </div>
    <div class="row" *ngIf="item[0].PatientNotification == 0">
        <div class="col-md-3">
            <textarea class="form-control" rows="3" >"Your appointment is not booked yet."</textarea>
@@ -30,7 +36,9 @@
                 </div>
             </div>
         </ng-template>
-
+    </div>
+    </div>
+    </div>
         
 
 

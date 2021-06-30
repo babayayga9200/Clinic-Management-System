@@ -159,3 +159,216 @@ ol.breadcrumb {
       border-bottom: 1px solid #fff;
     }
   }
+  /* today css*/
+.body-content.container-fluid {
+  background: #fbfbfb;
+}
+.breadcrumb {
+  color: #31708f !important;
+  background-color: #aad3eb !important;
+}
+.body-content.container-fluid.theme-dark {
+  background: #283044;
+}
+.navbar-brand {
+  font-size: 16px !important;
+}
+.panel-primary,
+.panel {
+  box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%) !important;
+  border: 0 !important;
+}
+.panel-primary > .panel-heading {
+  border: 0px !important;
+}
+
+.theme-dark {
+  background: #283044;
+}
+.theme-dark .panel.panel-default.dbgradient,
+.theme-dark .panel.panel-default.lbgradient,
+.theme-dark .panel.panel-default.llbgradient {
+  background: #2f3853;
+}
+.theme-dark .panel-primary .panel-body,
+.theme-dark .panel-body {
+  background: #2f3853;
+  color: #fff;
+}
+.theme-dark .ng-touched .ng-invalid {
+  border-color: red !important;
+  outline: 0;
+}
+.theme-dark td {
+  /* background: #1d2432 !important; */
+  background:#232a3b !important;
+}
+.table>tbody+tbody {
+  border-top: 1px solid #ddd !important;
+}
+.theme-dark .table>tbody>tr>td, 
+.theme-dark .table>tbody>tr>th, 
+.theme-dark .table>tfoot>tr>td, 
+.theme-dark .table>tfoot>tr>th, 
+.theme-dark .table>thead>tr>td, 
+.theme-dark .table>thead>tr>th {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #49556d !important;
+}
+.theme-dark th {
+   background: #1d2432; 
+}
+.theme-dark .table>tbody+tbody {
+  border-bottom: 1px solid #49556d !important;
+  border-top: 1px solid #49556d !important;
+}
+.theme-dark .panel-default {
+  border-color: transparent;
+  border: 0;
+  border-radius: 4px !important;
+}
+.theme-dark .bg-primary {
+  color: #fff;
+  background-color: #1d2432 !important;
+}
+.theme-dark .panel-primary,
+.theme-dark .panel,
+.theme-dark .panel-heading.panelhdr {
+  border-color: #283044;
+}
+.theme-dark .panel-heading.panelhdr {
+  background: #232a3b !important;
+  color: #fff !important;
+}
+.theme-dark form input,
+.theme-dark form select,
+.theme-dark form textarea {
+  background: #353e54 !important;
+  /* border: 0; */
+  color: #fff !important;
+}
+
+
+.theme-dark .form-control {
+  border: 1px solid transparent;
+}
+.theme-dark .form-control:focus {
+  box-shadow: none;
+}
+.theme-dark label.radio-inline,
+.theme-dark .bctext,
+.theme-dark label,
+.theme-dark label {
+  color: #d8d8d8 !important;
+}
+.theme-dark ::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #fff !important;
+  opacity: 1; /* Firefox */
+}
+.theme-dark .dbgradient i {
+  color: #169f70;
+}
+.theme-dark .lbgradient i {
+  color: #30d6d6;
+}
+.theme-dark .llbgradient i {
+  color: #c57514;
+}
+.theme-dark .modal-content td {
+  color: #fff;
+}
+.theme-dark .breadcrumb {
+  background-color: #353e54 !important;
+  color: #fff !important;
+}
+.theme-dark .modal-body.table-responsive, .theme-dark .modal-footer {
+  background: #2f3853;
+}
+.theme-dark .modal-header {
+  background: #1d2432 !important;
+}
+
+.theme-dark input.form-control {
+  background: #353e54 !important;
+  margin-bottom: 15px;
+}
+.theme-dark thead {
+  background: #232a3b;
+}
+.fullheight {
+  height: 100vh;
+}
+
+
+.theme-dark .table > thead > tr > th {
+  vertical-align: bottom;
+  border-bottom: 1px solid #49556d !important;
+}
+.theme-dark a.bctext {
+  color: #fff !important;
+}
+/* custom toggle switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 18px;
+  top: 16px;
+  left: -6px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

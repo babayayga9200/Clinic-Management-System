@@ -1,5 +1,6 @@
 <app-doctornavbar></app-doctornavbar>
 <!-- Breadcrumbs section -->
+<!-- Breadcrumbs section -->
 <section class="mar-t-50">
     <div class="row">
         <ol class="breadcrumb">
@@ -17,72 +18,41 @@
                     <h3 class="panel-title panelheadertext"><i class="fa fa-book" aria-hidden="true"></i> Doctors Information</h3>
                 </div>
                 <div class="panel-body">
-                    <div class="panel-body table-responsive">   
+                    <div class="panel-body table-responsive" table-hover>   
                     <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Phone</th>
-                                <th>Address</th>
-                                <th>Email</th>
-                            </tr>
+                        <div class="col-md-3">
+                        <tbody *ngFor="let item of doctors">
+                        
+                            <tr><th>Name</th><td>{{item?.Name}}</td></tr>
+                            <tr><th>Phone</th><td>{{item?.Phone}}</td></tr>
+                            <tr><th>Address</th><td>{{item?.Address}}</td></tr>
+                            <tr><th>Email</th><td>{{item?.Email}}</td></tr>
+                          
+                        </tbody>
+                    </div>
+                        <div class="col-md-3">
+                        <tbody *ngFor="let item of doctors">  
+                        
+                        <tr><th>Birth Date</th><td>{{item?.BirthDate | date:'dd/MM/yyyy'}}</td></tr>
+                        <tr><th>Dept No</th><td>{{item?.DeptNo}}</td></tr>
+                        <tr><th>Monthly Salary</th><td>{{item?.MonthlySalary}}</td></tr>
+                        <tr><th>Work Experience</th><td>{{item?.Work_Experience}}</td></tr>
+                         
+                        </tbody>
+                        </div>    
+                       
+                        <div class="col-md-3">
+                            <tbody *ngFor="let item of doctors">  
                             
-                        </thead>
-                        <tbody *ngFor="let item of doctors">
-                            <tr>
-                                <td>{{item?.Name}}</td>
-                                <td>{{item?.Phone}}</td>
-                                <td>{{item?.Address}}</td>
-                                <td>{{item?.Email}}</td>
-                            </tr>
-                        </tbody>
-                        
-                        <thead>
-                            <tr>
-                                <th>BirthDate</th>
-                                <th>DeptNo</th> 
-                                <th>Charges Per Visit</th> 
-                                <th>MonthlySalary</th>
-                            </tr>
-                         </thead>
-                         <tbody *ngFor="let item of doctors">
-                            <tr>
-                                <td>{{item?.BirthDate | date:'dd/MM/yyyy'}}</td>
-                                <td>{{item?.DeptNo}}</td>
-                                <td>{{item?.Charges_Per_Visit}}</td>
-                                <td>{{item?.MonthlySalary}}</td>
-                                
-                           </tr>
-                        </tbody>    
-                         <thead>
-                            <tr>
-                                <th>ReputeIndex</th>
-                                <th>Patients Treated</th>
-                                <th>Qualification</th>
-                                <th>Specialization</th>
-                            </tr>
-                         </thead>
-                         <tbody *ngFor="let item of doctors">
-                            <tr>
-                                <td>{{item?.ReputeIndex}}</td>
-                                <td>{{item?.Patients_Treated}}</td>
-                                <td>{{item?.Qualification}}</td>
-                                <td>{{item?.Specialization}}</td>
-                         </tr>
-                        </tbody>
-                        <thead>
-                            <tr>
-                                <th>Work Experience</th>
-                            </tr>
-                        </thead>
-                        <tbody *ngFor="let item of doctors">
-                            <tr>
-                                <td>{{item?.Work_Experience}}</td>
-                            </tr>
-                        </tbody>
-                        
-                   
-                    </table>
+                            <tr><th>Repute Index</th><td>{{item?.ReputeIndex}}</td></tr>
+                            <tr><th>Patients Treated</th><td>{{item?.Patients_Treated}}</td></tr>
+                            <tr><th>Qualification</th><td>{{item?.Qualification}}</td></tr>
+                            <tr><th>Specialization</th><td>{{item?.Specialization}}</td></tr>
+                             
+                            </tbody>
+                            </div>    
+                           
+                       </table>
                     </div>
                 </div>
             </div>

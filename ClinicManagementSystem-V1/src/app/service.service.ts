@@ -7,6 +7,7 @@ import { Bill} from './bill';
 import 'rxjs/add/operator/map';
 import { Patient } from './patient';
 import { Appointment } from './appointment';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
@@ -68,11 +69,15 @@ export class ServiceService {
   selectedAppointment:Appointment={
     DoctorId: 0,
     PatientId: 0,
-    DOA:new Date()
+    Date:new Date()
   };
 
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private router: Router) { }
+  getbills(){
+    return this.http.get(environment.apiUrl+'/bills');
+   }
+
   postDoctor(doctor:Doctor)
   {
     return this.http.post(environment.apiUrl+'/Doctors/PostDoctor',doctor);
@@ -140,7 +145,7 @@ export class ServiceService {
   }
 
   postAppointment(appointment:Appointment){
-    return this.http.post(environment.apiUrl+'/Appointment',appointment);
+    return this.http.post(environment.apiUrl+'/Appointments/postappointment',appointment);
   }
 
 
@@ -200,6 +205,12 @@ export class ServiceService {
   login():number{
     this.loginid = parseInt( localStorage.getItem('userRoles')?.split(",")[1] || '{}');
     return this.loginid;
+  }
+
+  Logout() {
+    localStorage.removeItem('userToken');
+    localStorage.removeItem('userRoles');
+    this.router.navigate(['/login']);
   }
   
 

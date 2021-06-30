@@ -15,12 +15,18 @@
                 <a routerLink='/todaysappointment' class = "navbar-brand headerfont">Todays Appointment</a>
                 <a routerLink='/viewappointments' class = "navbar-brand headerfont">Pending Appointment</a>
                 <a routerLink='/patienthistory' class = "navbar-brand headerfont">Patient History</a>
+                <a (click)="this.api.Logout()" class = "navbar-brand headerfont">Log Out</a>
+
                <!-- <a routerLink='generatebill' class = "navbar-brand headerfont">Generate Bill</a>-->
-                
+               <label class="switch theme-switcher-wrap">
+                <input type="checkbox" class="theme-switcher"  [ngClass]="(storedTheme === 'theme-dark')?'theme-switcher active' : 'theme-switcher'" 
+                (click)="setTheme()">
+                <span class="slider round"></span>
+              </label>
             </div>
         </nav>
         </div>
-        <div class="container-fluid body-content">
+        <div class="container-fluid body-content {{storedTheme}}">
           <router-outlet></router-outlet>
             <footer class="navbar navbar-fixed-bottom bg-primary footercss">
                 <p>&copy;2021 Clinic Management System</p>

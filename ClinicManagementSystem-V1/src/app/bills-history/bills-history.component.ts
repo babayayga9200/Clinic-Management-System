@@ -1,5 +1,7 @@
+import { DatePipe } from '@angular/common';
 import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {ServiceService} from '../service.service'; 
 
 @Component({
@@ -11,13 +13,12 @@ import {ServiceService} from '../service.service';
 export class BillsHistoryComponent implements OnInit {
 
   public Bill_Details :any;
-  constructor(private api : ServiceService) { }
+  constructor(private api : ServiceService, public router:Router,public datePipe: DatePipe) { }
 
   
   ngOnInit (): void {
-    this.api. getBillDetailsById(10).subscribe((Bill_Details)=>{
+    this.api. getBillDetailsById(this.api.login()).subscribe((Bill_Details)=>{
       this.Bill_Details=Bill_Details;
-      console.log(Bill_Details); 
    });
   }
 }

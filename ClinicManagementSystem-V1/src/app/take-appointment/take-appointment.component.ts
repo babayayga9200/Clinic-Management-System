@@ -1,79 +1,11 @@
-// import { Component, OnInit } from '@angular/core';
-// import {ServiceService} from '../service.service'; 
-// import { stringify } from '@angular/compiler/src/util';
-// import * as $AB from 'jquery';
-// import { event } from 'jquery';
-
-// @Component({
-//   selector: 'app-take-appointment',
-//   templateUrl: './take-appointment.component.html',
-//   styleUrls: ['./take-appointment.component.css']
-// })
-// export class TakeAppointmentComponent implements OnInit {    
-
-//     ClickedDepartment:Number=0;
-    
-  
-//     radioChangeHandler(event:any){
-//       this.ClickedDepartment=event.target.value;
-//       console.log(this.ClickedDepartment);
-//     }
-  
-    
-//     doctor:any; //select by id
-  
-  
-//     onSelectDoctor(id:number){
-//       this.api.getDoctorById(id).subscribe((doctor)=>{
-//         this.doctor=doctor;
-//         console.log(doctor); 
-//           });
-        
-//       (<any>$('#doctorModal')).modal('show');      
-      
-//     }
-//     doctor_By_Cardio:any;
-//     doctor_By_Ortho:any;
-//     doctor_By_Ent:any;
-//     doctor_By_Physio:any; 
-//     doctor_By_Neuro:any
-  
-        
-//     constructor (private api : ServiceService) {}
-    
-//     ngOnInit(): void {
-//       this.api.GetDoctor_ByDeptId(1).subscribe((doctor_By_Cardio)=>{
-//       this.doctor_By_Cardio=doctor_By_Cardio;
-//       console.log(doctor_By_Cardio); 
-//       });
-//       this.api.GetDoctor_ByDeptId(2).subscribe((doctor_By_Ortho)=>{
-//       this.doctor_By_Ortho=doctor_By_Ortho;
-//       console.log(doctor_By_Ortho); 
-//        });
-//       this.api.GetDoctor_ByDeptId(3).subscribe((doctor_By_Ent)=>{
-//       this.doctor_By_Ent=doctor_By_Ent;
-//       console.log(doctor_By_Ent); 
-//       });
-//       this.api.GetDoctor_ByDeptId(4).subscribe((doctor_By_Physio)=>{
-//       this.doctor_By_Physio=doctor_By_Physio;
-//       console.log(doctor_By_Physio); 
-//       });
-//       this.api.GetDoctor_ByDeptId(5).subscribe((doctor_By_Neuro)=>{
-//       this.doctor_By_Neuro=doctor_By_Neuro;
-//       console.log(doctor_By_Neuro); 
-//        });
-//     }
-// }
-
-
-
-// *********************************************************************************************************************
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef,OnInit } from '@angular/core';
 import {ServiceService} from '../service.service';
 import { stringify } from '@angular/compiler/src/util';
-import { NgForm, ReactiveFormsModule } from '@angular/forms';
+import { NgForm, FormBuilder, NgModel, ReactiveFormsModule } from '@angular/forms';
 import * as $AB from 'jquery';
 import { event } from 'jquery';
+import { empty } from 'rxjs';
+import { Appointment } from '../appointment';
 
 @Component({
   selector: 'app-take-appointment',
@@ -84,14 +16,40 @@ import { event } from 'jquery';
 export class TakeAppointmentComponent implements OnInit {   
   showSuccessMessage:boolean=true;
   serverErrorMessage:string='';
-
-
+  Appdate:Date;
+  @ViewChild("Appoint") myNameElem: ElementRef;
     ClickedDepartment:Number=0;
+    docID:number;
+    appointDate:Date;
+    a:Appointment={
+      DoctorId:0,
+      PatientId:0,
+      Date:new Date()
+    };
+
+    
+
+    bookAppointment(){
+      console.log(this.docID);
+
+        this.a.DoctorId=this.doctor[0].DoctorID;
+        this.a.PatientId=this.api.login();
+        this.a.Date=this.myNameElem.nativeElement.value;
+        console.log(this.a);
+
+        this.api.postAppointment(this.a).subscribe(
+          x=>{
+            this.showSuccessMessage=true;
+            setTimeout(()=>this.showSuccessMessage=false,5000);            
+          },
+        );
+        
+    }
+
     
   
     radioChangeHandler(event:any){
       this.ClickedDepartment=event.target.value;
-      console.log(this.ClickedDepartment);
     }
   
     
@@ -100,7 +58,6 @@ export class TakeAppointmentComponent implements OnInit {
     onSelectDoctor(id:number){
       this.api.getDoctorById(id).subscribe((doctor: any)=>{
         this.doctor=doctor;
-        console.log(doctor); 
           });
         
       (<any>$('#doctorModal')).modal('show');      
@@ -108,6 +65,8 @@ export class TakeAppointmentComponent implements OnInit {
     }
 
     onSubmit(form:NgForm){
+      this.appointDate=form.value;
+      
       this.api.postAppointment(form.value).subscribe(
         x=>{
           this.showSuccessMessage=true;
@@ -120,7 +79,7 @@ export class TakeAppointmentComponent implements OnInit {
       this.api.selectedAppointment={
         DoctorId : 0,
         PatientId:0,
-        DOA: new Date()
+        Date: new Date()
       };
       form.resetForm();
       this.serverErrorMessage;
@@ -128,7 +87,7 @@ export class TakeAppointmentComponent implements OnInit {
     onAppointment(DocId:number,date:Date ){
       this.api.selectedAppointment.DoctorId=DocId,
       this.api.selectedAppointment.PatientId=1,
-      this.api.selectedAppointment.DOA=date
+      this.api.selectedAppointment.Date=date
     }
     doctor_By_Cardio:any;
     doctor_By_Ortho:any;
@@ -138,35 +97,29 @@ export class TakeAppointmentComponent implements OnInit {
   
     
         
-    constructor (public api : ServiceService) {}
+    constructor (public api : ServiceService, private formBuilder: FormBuilder) {}
     
     ngOnInit(): void {
+      this.Appdate = new Date();
+      // this.appointmentForm = this.formBuilder.group({Appdate : ""});
+
       this.api.GetDoctor_ByDeptId(1).subscribe((doctor_By_Cardio: any)=>{
       this.doctor_By_Cardio=doctor_By_Cardio;
-      console.log(doctor_By_Cardio); 
       });
       this.api.GetDoctor_ByDeptId(2).subscribe((doctor_By_Ortho: any)=>{
       this.doctor_By_Ortho=doctor_By_Ortho;
-      console.log(doctor_By_Ortho); 
        });
       this.api.GetDoctor_ByDeptId(3).subscribe((doctor_By_Ent: any)=>{
       this.doctor_By_Ent=doctor_By_Ent;
-      console.log(doctor_By_Ent); 
       });
       this.api.GetDoctor_ByDeptId(4).subscribe((doctor_By_Physio: any)=>{
       this.doctor_By_Physio=doctor_By_Physio;
-      console.log(doctor_By_Physio); 
       });
       this.api.GetDoctor_ByDeptId(5).subscribe((doctor_By_Neuro: any)=>{
       this.doctor_By_Neuro=doctor_By_Neuro;
-      console.log(doctor_By_Neuro); 
        });
     }
 
 
-    // onAppointment(DocId:number,date:Date ){
-    //   this.api.selectedAppointment.DoctorId=DocId,
-    //   this.api.selectedAppointment.PatientId=1,
-    //   this.api.selectedAppointment.DOA=
-    // }
+    
 }

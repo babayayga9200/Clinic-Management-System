@@ -17,7 +17,6 @@ export class CurrentAppointmentsComponent implements OnInit {
 
     this.api.getAppointmentById(this.api.login()).subscribe((appointment: any)=>{
       this.appointment=appointment;
-      console.log(appointment); 
         });
   }
 

@@ -1,7 +1,8 @@
+
 <div class="row">
     <nav class="navbar navbar-fixed-top bg-primary ">
       <div class="navbar-header">
-            <a routerLink="patient-view" class="navbar-brand txt-white">
+            <a routerLink="/patient-view" class="navbar-brand txt-white">
                 <span class="logo"><i class="fa fa-stethoscope" aria-hidden="true"></i> </span> CLINIC MANAGEMENT SYSTEM
             </a>
             
@@ -14,11 +15,16 @@
             <a routerLink='/take-appointment' class="navbar-brand headerfont">Take Appointment</a>
             <a routerLink='/bills-history' class="navbar-brand headerfont">Bills History</a>
             <a routerLink='/treatment-history' class="navbar-brand headerfont">Treatment History</a>
-            <a routerLink='/feedback' class="navbar-brand headerfont">Feedback</a>
-            <a routerLink='' class="navbar-brand headerfont">Logout</a>
+            <!-- <a routerLink='/feedback' class="navbar-brand headerfont">Feedback</a> -->
+            <a (click)="this.api.Logout()" class="navbar-brand headerfont">Logout</a>
+            <label class="switch theme-switcher-wrap">
+                <input type="checkbox" class="theme-switcher"  [ngClass]="(storedTheme === 'theme-dark')?'theme-switcher active' : 'theme-switcher'" 
+                (click)="setTheme()">
+                <span class="slider round"></span>
+              </label>
         </div>
     </nav>
-    <div class="container-fluid body-content">
+    <div class="container-fluid body-content {{storedTheme}}">
       <router-outlet></router-outlet> 
         <footer class="navbar navbar-fixed-bottom bg-primary footercss">
             <p>&copy;2021 Clinic Management System</p>

@@ -101,11 +101,11 @@ export class DoctordetailsComponent implements OnInit {
    doctors:any;
    patients:any;
    staffs:any;
-   constructor(private api:ServiceService) { }
+   constructor(private api:ServiceService, public router:Router) { }
  
   ngOnInit(): void {
    
-      this.api.getDoctorById(35).subscribe((doctors)=>{
+      this.api.getDoctorById(this.api.login()).subscribe((doctors)=>{
         this.doctors=doctors;
         console.log(doctors); 
           });

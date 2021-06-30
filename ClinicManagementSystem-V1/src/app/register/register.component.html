@@ -12,12 +12,17 @@
 <!-- @*Doctor Form*@ -->
 <section>
     <div class="row mg-30">
-        <div class="col-md-12">
+        <div class="col-md-5">
+            <img src="../../assets/img/cms3.png" alt="logo-img" class="img-responsive" />
+        </div>
+        <div class="col-md-7 right-side">
         <div class="panel panel-default mt-45">
-            <div class="panel-heading panelhdr">
+            <!-- <div class="panel-heading panelhdr">
                 <h3 class="panel-title panelheadertext"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Patient Registration Form</h3>
-            </div>
+            </div> -->
             <div class="panel-body">
+                <h3 class="panel-title panelheadertext"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    Patient Registration Form</h3>
                 <form name="form" #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)" autocomplete="on">
                     <div class="col-md-12">
                         <div class="form-group">

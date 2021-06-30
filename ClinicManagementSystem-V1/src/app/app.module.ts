@@ -37,6 +37,7 @@ import { ViewappointmentsComponent } from './viewappointments/viewappointments.c
 import { PatienthistoryComponent } from './patienthistory/patienthistory.component';
 import { PatientnavbarComponent } from './patientnavbar/patientnavbar.component';
 import { DoctornavbarComponent } from './doctornavbar/doctornavbar.component';
+import {ForbiddenComponent} from './forbidden/forbidden.component';
 
 const routes: Routes = [
   {path:'adminhome',component:AdminhomeComponent,canActivate: [AuthGuard] , data: { roles: ['1'] }},
@@ -53,16 +54,18 @@ const routes: Routes = [
   {path:'treatment-history',component:TreatmentHistoryComponent,canActivate: [AuthGuard] , data: { roles: ['1','3'] }},
   {path:'feedback',component:FeedbackComponent,canActivate: [AuthGuard] , data: { roles: ['1','3'] }},
   {path:'doctordetails',component:DoctordetailsComponent,canActivate: [AuthGuard] , data: { roles: ['1','2'] }},
-  {path:'todaysappointment',component:TodaysappointmentComponent,canActivate: [AuthGuard] , data: { roles: ['1','2'] }},
+  {path:'todaysappointment',component:TodaysappointmentComponent,canActivate: [AuthGuard] , data: { roles: ['1','2','3'] }},
   {path:'generatebill',component:GeneratebillComponent,canActivate: [AuthGuard] , data: { roles: ['1','2'] }},
   {path:'viewappointments',component:ViewappointmentsComponent,canActivate: [AuthGuard] , data: { roles: ['1','2'] }},
-  {path:'patienthistory',component:PatienthistoryComponent,canActivate: [AuthGuard] , data: { roles: ['1','3'] }},
+  {path:'patienthistory',component:PatienthistoryComponent,canActivate: [AuthGuard] , data: { roles: ['1','2'] }},
   {path:'register',component:RegisterComponent},
+  {path:'forbidden',component:ForbiddenComponent},
   {path:'login',component:LoginComponent},
   {path:'',redirectTo:'login',pathMatch:'full'}
 ];
 @NgModule({
   declarations: [
+    ForbiddenComponent,
     AppComponent,
     ManageclinicComponent,
     AdminhomeComponent,
@@ -86,7 +89,7 @@ const routes: Routes = [
     ViewappointmentsComponent,
     PatienthistoryComponent,
     PatientnavbarComponent,
-    DoctornavbarComponent
+    DoctornavbarComponent,
   ],
   imports: [
     FormsModule,

@@ -13,13 +13,17 @@ export class PatientViewComponent implements OnInit {
   constructor(private api:ServiceService,public datePipe: DatePipe) { }
 
   ngOnInit(): void {
-    this.api.getPatientById(20).subscribe((patient: any)=>{
+    console.log(this.api.login());
+
+    this.api.getPatientById(this.api.login()).subscribe((patient: any)=>{
       this.patient=patient;
       console.log(patient); 
         });
 
         console.log(this.api.login());
+
   }
+  
 
 }
 

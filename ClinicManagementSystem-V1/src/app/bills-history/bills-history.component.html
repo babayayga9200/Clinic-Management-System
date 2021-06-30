@@ -3,7 +3,7 @@
 <section class="mar-t-50">
     <div class="row">
         <ol class="breadcrumb">
-            <li><a routerLink='take-appointment' class="bctext"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Take Appointment</a></li>
+            <li><a href='/take-appointment' class="bctext"><i class="fa fa-calendar-check-o" aria-hidden="true"></i><b>Bill History</b></a></li>
         </ol>
     </div>
 </section>
@@ -29,7 +29,7 @@
                             <tr *ngFor="let item of Bill_Details">
                                 <th>{{item?.DoctorName}}</th>
                                 <th>{{item?.PatientName}}</th>
-                                <td>{{item?.Date}}</td>
+                                <td>{{datePipe.transform(item?.Date,'dd-MM-yyyy')}}</td>
                                 <td>{{item?.Amount}}</td>
                             </tr>
                         </tbody>

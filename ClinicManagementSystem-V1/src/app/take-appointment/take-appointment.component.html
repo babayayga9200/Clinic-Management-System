@@ -3,7 +3,7 @@
 <section class="mar-t-50">
     <div class="row">
         <ol class="breadcrumb">
-            <li><a routerLink='take-appointment' class="bctext"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Take Appointment</a></li>
+            <li><a href='/take-appointment' class="bctext"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Take Appointment</a></li>
         </ol>
     </div>
 </section>
@@ -71,7 +71,7 @@
                                 <th>Select</th>
                                 <th>Name</th>
                                 <th>Charges Per Visit</th>
-                                <th>Qalification</th>
+                                <th>Qualification</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -124,7 +124,7 @@
                                 <th>Select</th>
                                 <th>Name</th>
                                 <th>Charges Per Visit</th>
-                                <th>Qalification</th>
+                                <th>Quaification</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -156,25 +156,31 @@
                                     <h3 class ="panel-title panelheadertext"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Form</h3>                                    
                                 </div>
                                 <div class="panel-body">
-                                    <form name="Aform" #appointmentForm="ngForm" (ngSubmit)="onSubmit(appointmentForm)" autocomplete="on">
-                                        <div class="form-group">
-                                            <label for="DoctorId">DoctorID</label>
-                                            <input type="text" #DoctorID="ngModel" [(ngModel)]="api.selectedAppointment.DoctorId" class="form-control"id="DocId" value="------doctornametoget----">
-                                            <label for="PatientId">YourId</label>
-                                            <input type="text" #PatientID="ngModel" [ngModel]="api.selectedAppointment.PatientId" class="form-control"id="PatientID" value="1">
-                                            <div class="form-group">
-                                                <label for="date">Date of Appointment</label>
-                                                <input type="date" #date="ngModel" [(ngModel)]="api.selectedAppointment.DOA" name="Appdate" class="form-control" id="Date" placeholder="Appointment Date" required>
-                                            </div>
-                                        </div>
-                                    </form>
+                                    
+                                    <table>
+                                        <thead>
+                                            <th>Enter your date of appointment</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><input type="datetime-local" name="Appdate" id="Date" placeholder="Appointment Date" #Appoint required>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-        </section>           
-                
-                  <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">Close</button>
+        </section>   
+                  <div row>
+                    <div class ="col-md-4"> 
+                        <button type="button" class="btn btn-default btn-success" (click)="bookAppointment()" data-dismiss="modal">Book Appointment</button>
+                    </div>
+                    <div >
+                        <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

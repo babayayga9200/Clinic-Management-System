@@ -10,7 +10,7 @@ export class NotificationsComponent implements OnInit {
   constructor(private api:ServiceService) { }
 
   ngOnInit(): void {
-    this.api.getNotificationById(20).subscribe((notification: any)=>{
+    this.api.getNotificationById(this.api.login()).subscribe((notification: any)=>{
       this.item=notification;
       console.log(notification); 
         });

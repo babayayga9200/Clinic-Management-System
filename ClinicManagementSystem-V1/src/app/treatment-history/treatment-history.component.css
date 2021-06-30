@@ -1,0 +1,40 @@
+.bctext {
+    font-weight: bold;
+}
+
+.breadcrumb {
+    margin-top: 50px;
+}
+
+h2 {
+    text-align: left;
+    margin-top: 2px;
+    margin-left: 480px;
+    font-weight: bold;
+}
+
+.form-control {
+    margin-left: 500px;
+    margin-top: 50px;
+}
+.mb-50 {
+    margin-bottom: 50px;
+}
+
+.panelhdr {
+    color: #31708f !important;
+    background-color: #aad3eb !important;
+}
+
+.panelheadertext{
+    font-weight: bold;
+}
+
+.panelicon {
+    color: #fff;
+    font-size: 70px;
+    float: right;
+    position: relative;
+    top: 15px;
+    padding-right: 25px;
+}

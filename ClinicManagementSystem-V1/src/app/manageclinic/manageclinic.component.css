@@ -6,6 +6,8 @@
         position: relative;
         top: 8px;
     }
+
+   
     .panelhdr {
         color: #31708f !important;
         background-color: #aad3eb !important;
@@ -29,5 +31,9 @@
 
     .stafflist th:nth-child(1), .patientlist th:nth-child(2), .patientlist th:nth-child(3), .patientlist th:nth-child(4){
         width:25%;
+    }
+
+    .body-content.container-fluid.theme-dark {
+        height: 100vh;
     }
     
